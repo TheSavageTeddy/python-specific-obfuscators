@@ -1,2 +1,3 @@
-# python-specific-obfuscators
-Multiple Python obfuscators for specific situations, such as when characters are limited, or just to provide a variety of obfuscation methods.
+# Python Custom Obfuscator
+
+Build your own custom obfuscated python code from a list of obfuscators!
