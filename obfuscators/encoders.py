@@ -1,11 +1,10 @@
 
 
-def string_to_ords(text: str):
+def string_to_chrs(text: str):
     '''
-    Simply converts strings to their decimal equivalent, wrapped in ord() and concatenated.
+    Simply converts strings to their decimal equivalent, wrapped in chr() and concatenated.
     
-    Example: "Hello" -> "ord(104)+ord(101)+ord(108)+ord(108)+ord(111)"
+    Example: "Hello" -> "chr(72)+chr(101)+chr(108)+chr(108)+chr(111)"
     '''
-    return f'ord({")+ord(".join(map(str, map(ord, text)))})' # sorry for unreadable code
+    return f'chr({")+chr(".join(map(str, map(ord, text)))})' # sorry for unreadable code
 
-print(string_to_ords("hello"))
