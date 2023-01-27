@@ -33,3 +33,13 @@ class NumberManipulators:
         '''
         return addEval("+".join(["1"] * num), evaluate)
 
+class FormatManipulators:
+    def format_to_string(self, array: list|tuple, doubleQuotes = False, evaluate = True) -> str:
+        '''
+        Takes in an iterable, and formats into string, concatenated
+        `evaluate` : Wrap in `eval()` (default True)
+
+        Example: `["A","B",1,2,3]` -> `'%s%s%s%s%s'%('A', 'B', 1, 2, 3)`
+        '''
+        quotes = '"' if doubleQuotes else "'"
+        return addEval(f'''{quotes}{"%s"*len(array)}{quotes}%{str(tuple(array))}''', evaluate) # wtf is this 1 liner
