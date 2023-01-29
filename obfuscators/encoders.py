@@ -72,11 +72,19 @@ class FormatManipulators:
                 else:
                     zero = "-(1==0)" if prim == "comparison" else "-False"
                 payloadList.append(f"{'-~'*int(digit)}{zero}")
+
+            if isNegative:
+                payloadList[0] = "-" + payloadList[0]
             
             # amazing one-liner very readable good coding
             return addEval(f'''{quotes}{"".join([f'%{random.choice(percentLetters)}' for _ in range(len(payloadList))])}{quotes}%{str(tuple(payloadList)).replace("'","")}''', evaluate)
-            
-
-
-print(FormatManipulators().format_to_number(69420))
-
+        else:
+            prim = random.choice(primitives)
+            if prim == "number":
+                zero = 0
+            else:
+                zero = "-(1==0)" if prim == "comparison" else "-False"
+            if evaluate:
+                return addEval(f'''{quotes}{'-' if isNegative else ''}{'-~'*int(number)}{zero}{quotes}''', evaluate)
+            else:
+                return f'''{'-' if isNegative else ''}{'-~'*int(number)}{zero}'''
