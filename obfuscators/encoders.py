@@ -1,3 +1,5 @@
+import random
+
 def addEval(text: str, doEval = True) -> str:
     return f"eval({text})" if doEval else text
 
@@ -43,3 +45,38 @@ class FormatManipulators:
         '''
         quotes = '"' if doubleQuotes else "'"
         return addEval(f'''{quotes}{"%s"*len(array)}{quotes}%{str(tuple(array))}''', evaluate) # wtf is this 1 liner
+
+    def format_to_number(self, number: int, primitives=["bool", "comparison", "number"], doubleQuotes = False, nesting = True, percentLetters = ['s', 'd'], evaluate = True):
+        '''
+        Returns a format string that evaluates to the number.
+        `primitives` : List of primitives to use to construct. valid are ["bool", "comparison", "number"]. Will be used randomly
+        `evaluate` : Wrap in `eval()` (default True)
+
+        Example:
+        '''
+        assert len(primitives) >= 1, 'You must choose at least 1 primitive. Valid include ["bool", "comparison", "number"]'
+        assert ('s' in percentLetters or 'd' in percentLetters), "Invalid percent letter. Must any of these ['s', 'd']"
+        assert type(number) == int, 'Specified number must be an integar'
+
+        quotes = '"' if doubleQuotes else "'"
+
+        isNegative = number != abs(number)
+        number = abs(number)
+        if nesting:
+            payloadList = []
+            for digit in str(number):
+                # Construct single digit
+                prim = random.choice(primitives)
+                if prim == "number":
+                    zero = 0
+                else:
+                    zero = "-(1==0)" if prim == "comparison" else "False"
+                payloadList.append(f"{'-~'*int(digit)}{zero}")
+            
+            # amazing one-liner very readable good coding
+            return addEval(f'''{quotes}{"".join([f'%{random.choice(percentLetters)}' for _ in range(len(payloadList))])}{quotes}%{str(tuple(payloadList)).replace("'","")}''', evaluate)
+            
+
+
+print(FormatManipulators().format_to_number(69420))
+
