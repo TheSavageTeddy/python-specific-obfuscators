@@ -39,20 +39,24 @@ class NumberManipulators:
         return addEval("+".join(["1"] * num), evaluate)
 
 class FormatManipulators:
-    def format_to_string(self, array: list|tuple, doubleQuotes = False, evaluate = True) -> str:
+    def format_to_string(self, array: list|tuple, percentLetters=["c"],doubleQuotes = False, removeQuotes = False,evaluate = True) -> str:
         '''
         Takes in an iterable, and formats into string, concatenated
+        `percentLetters` : Letters to use in format string ['s', 'c']
         `evaluate` : Wrap in `eval()` (default True)
 
         Example: `["A","B",1,2,3]` -> `'%s%s%s%s%s'%('A', 'B', 1, 2, 3)`
         '''
+        assert ('s' in percentLetters or 'c' in percentLetters), "Invalid percent letter. Must any of these ['s', 'd']"
+        
         quotes = '"' if doubleQuotes else "'"
-        return addEval(f'''{quotes}{"%s"*len(array)}{quotes}%{str(tuple(array))}''', evaluate) # wtf is this 1 liner
+        return addEval(f'''{quotes}{"".join([f"%{random.choice(percentLetters)}" for i in range(len(array))])}{quotes}%{str(tuple(array)).replace("'", "") if removeQuotes else str(tuple(array))}''', evaluate) # wtf is this 1 liner
 
     def format_to_number(self, number: int, primitives=["bool", "comparison", "number"], doubleQuotes = False, nesting = True, percentLetters = ['s', 'd'], evaluate = True):
         '''
         Returns a format string that evaluates to the number.
         `primitives` : List of primitives to use to construct. valid are ["bool", "comparison", "number"]. Will be used randomly
+        `percentLetters` : Letters to use in format string ['s', 'd']
         `evaluate` : Wrap in `eval()` (default True)
 
         Example:
