@@ -7,14 +7,17 @@ class StringManipulators:
     def string_to_decimal(self, text: str) -> list[int]:
         return list(map(ord, text))
 
-    def decimal_to_chrs(self, array: list, evaluate = True) -> str:
+    def decimal_to_chrs(self, array: list, intWrap = False, evaluate = True) -> str:
         '''
         Wraps each element of array in `chr()` and concatenates them.
         `evaluate` : Wrap in `eval()` (default True)
 
         Example: `[101, 102]` -> `eval(chr(101)+chr(102))`
         '''
-        return addEval(f'chr({")+chr(".join(map(str, array))})', evaluate)
+        if intWrap:
+            return addEval(f'chr(int({"))+chr(int(".join(map(str, array))}))', evaluate)
+        else:
+            return addEval(f'chr({")+chr(".join(map(str, array))})', evaluate)
 
     def string_to_chrs(self, text: str, evaluate = True) -> str:
         '''

