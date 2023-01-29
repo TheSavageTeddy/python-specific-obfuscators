@@ -70,7 +70,7 @@ class FormatManipulators:
                 if prim == "number":
                     zero = 0
                 else:
-                    zero = "-(1==0)" if prim == "comparison" else "False"
+                    zero = "-(1==0)" if prim == "comparison" else "-False"
                 payloadList.append(f"{'-~'*int(digit)}{zero}")
             
             # amazing one-liner very readable good coding
